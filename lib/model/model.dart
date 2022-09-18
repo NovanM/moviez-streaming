@@ -1,0 +1,1 @@
+part 'movie.dart';
