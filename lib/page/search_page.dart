@@ -64,11 +64,20 @@ class _SearchPageState extends State<SearchPage> {
                               const EdgeInsets.symmetric(horizontal: margin),
                           child: TextField(
                             decoration: InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.search,
-                                size: 30,
-                                color: primaryColor,
+                              prefixIcon: Hero(
+                                tag: 'search',
+                                child: Material(
+                                  child: Icon(
+                                    Icons.search,
+                                    size: 30,
+                                    color: primaryColor,
+                                  
+                                  ),
+                                  
+                                ),
+                                
                               ),
+                              hintText: 'Title',
                               border: InputBorder.none,
                             ),
                             style: searchStyle,

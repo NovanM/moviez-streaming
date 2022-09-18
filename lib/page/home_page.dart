@@ -52,15 +52,20 @@ class HomePage extends StatelessWidget {
                               ],
                             ),
                             const Spacer(),
-                            IconButton(
-                              icon: const Icon(
-                                Icons.search,
-                                size: 30,
+                            Hero(
+                              tag: 'search',
+                              child: Material(
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.search,
+                                    size: 30,
+                                  ),
+                                  onPressed: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => const SearchPage())),
+                                ),
                               ),
-                              onPressed: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => const SearchPage())),
                             ),
                             SizedBox(
                               width: 11,
