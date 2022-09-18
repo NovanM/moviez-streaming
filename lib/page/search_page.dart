@@ -19,6 +19,19 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: ElevatedButton(
+        onPressed: () {},
+        child: Text(
+          'Suggest Movie',
+          style: titleStyle.copyWith(color: Colors.white,fontSize: 16),
+        ),
+        style: ElevatedButton.styleFrom(
+            primary: primaryColor,
+            minimumSize: Size(220, 50),
+            shape: StadiumBorder(),
+            shadowColor: Color(0xffC4C8D7)),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -72,60 +85,14 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                         SizedBox(
                           child: newMovies.isNotEmpty
-                              ? ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: BouncingScrollPhysics(),
-                                  itemBuilder: (context, index) {
-                                    final Movie movie = newMovies[index];
-                                    return Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 30),
-                                      child: Row(
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            child: Image.asset(
-                                              movie.imagePath,
-                                              width: 100,
-                                              height: 127,
-                                              fit: BoxFit.fill,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 20,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                movie.title,
-                                                style: titleStyle,
-                                              ),
-                                              SizedBox(
-                                                height: 4,
-                                              ),
-                                              Text(
-                                                movie.genreStyles.join(", "),
-                                                style: genreStyle,
-                                              ),
-                                              SizedBox(
-                                                height: 20,
-                                              ),
-                                              ratingStars(movie.rating)
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                  itemCount: newMovies.length,
-                                )
-                              :  Text(
+                              ? listMovies(newMovies)
+                              : Text(
                                   'No results found',
                                   style: genreStyle,
                                 ),
+                        ),
+                        SizedBox(
+                          height: 80,
                         )
                       ],
                     ),

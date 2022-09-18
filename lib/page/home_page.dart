@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
                                   'Moviez',
                                   style: pageNameStyle,
                                 ),
-                                 SizedBox(
+                                SizedBox(
                                   height: 4,
                                 ),
                                 Text(
@@ -62,12 +62,12 @@ class HomePage extends StatelessWidget {
                                   MaterialPageRoute(
                                       builder: (_) => const SearchPage())),
                             ),
-                             SizedBox(
+                            SizedBox(
                               width: 11,
                             )
                           ],
                         ),
-                         SizedBox(
+                        SizedBox(
                           height: 30,
                         ),
                         Container(
@@ -140,56 +140,7 @@ class HomePage extends StatelessWidget {
                           style: pageNameStyle.copyWith(fontSize: 24),
                         ),
                         SizedBox(height: 20),
-                        SizedBox(
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: BouncingScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              final Movie movie = movieList[index];
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 30),
-                                child: Row(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        movie.imagePath,
-                                        width: 100,
-                                        height: 127,
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          movie.title,
-                                          style: titleStyle,
-                                        ),
-                                        SizedBox(
-                                          height: 4,
-                                        ),
-                                        Text(
-                                          movie.genreStyles.join(", "),
-                                          style: genreStyle,
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        ratingStars(movie.rating)
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              );
-                            },
-                            itemCount: movieList.length,
-                          ),
-                        )
+                        SizedBox(child: listMovies(movieList))
                       ],
                     ),
                   )
